@@ -1,0 +1,24 @@
+name: Local Assistant
+version: 1.0.0
+schema: v1
+models:
+  - name: Llama CPP
+    provider: llama.cpp
+    model: default
+    apiBase: http://localhost:8080
+
+tabAutocompleteModel:
+  title: "RamaLama (AutoComplete)"
+  provider: "custom"
+  model: "default"
+
+allowAnonymousTelemetry: false
+context:
+  - provider: code
+  - provider: docs
+  - provider: diff
+  - provider: terminal
+  - provider: problems
+  - provider: folder
+  - provider: codebase
+
