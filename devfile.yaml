@@ -40,11 +40,11 @@ commands:
     exec:
       component: udi
       commandLine: "mkdir /home/user/.continue && cp /projects/cde-ramalama-continue/continue-config.yaml /home/user/.continue/config.yaml"
-#  - id: servemodel
-#    exec:
-#      component: ramalama
-#      commandLine: "ramalama --store /tmp serve ollama://granite-code:latest"
+  - id: servemodel
+    exec:
+      component: ramalama
+      commandLine: "ramalama --store /tmp serve ollama://granite-code:latest"
 events:
   postStart:
     - copyconfig
-#    - servemodel
+    - servemodel
