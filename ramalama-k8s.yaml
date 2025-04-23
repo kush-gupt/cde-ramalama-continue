@@ -1,0 +1,64 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ramalama-pv
+spec:
+  capacity:
+    storage: 3Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual
+  hostPath:
+    path: /home/rohan/.local/share/ramalama/
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ramalama-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
+  storageClassName: manual
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ramalama-pod
+spec:
+  containers:
+    - name: ramalama-container
+      image: quay.io/ramalama/ramalama:latest
+      args:
+        - "ramalama"
+        - "--store"
+        - "/models"
+        - "serve"
+        - "ollama://granite-code:latest"
+      ports:
+        - containerPort: 8080
+      volumeMounts:
+        - mountPath: "/models"
+          name: ramalama-volume
+  volumes:
+    - name: ramalama-volume
+      persistentVolumeClaim:
+        claimName: ramalama-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ramalama-nodeport-service
+spec:
+  selector:
+    app: ramalama-pod
+  ports:
+    - protocol: TCP
+      port: 8080         # Port the service uses within the cluster
+      targetPort: 8080    # Port on the container
+      nodePort: 30080     # Port exposed on the node
+  type: NodePort
+
