@@ -34,14 +34,25 @@ components:
             # nvidia.com/gpu: 1 # Uncomment this if the pod shall be scheduled only on a GPU node
     container:
       image: quay.io/ramalama/ramalama:0.7
-      args: ['tail', '-f', '/dev/null']
+      args:
+        - "ramalama"
+        - "--store"
+        - "/models"
+        - "serve"
+        - "ollama://granite-code:latest"
       mountSources: true
       sourceMapping: /.ramalama
+      volumeMounts:
+        - name: ramalama-models
+          path: /models
       endpoints:
         - exposure: public
           name: ramalamaserve
           protocol: http
           targetPort: 8080
+  - name: ramalama-models
+    volume:
+      size: 5Gi
 commands:
   - id: copyconfig
     exec:

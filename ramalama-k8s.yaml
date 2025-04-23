@@ -10,7 +10,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: manual
   hostPath:
-    path: /home/rohan/.local/share/ramalama/
+    path: /Users/rokumar/.local/share/ramalama/
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -28,6 +28,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: ramalama-pod
+  labels:
+    app: ramalama-pod
 spec:
   containers:
     - name: ramalama-container
@@ -56,9 +58,9 @@ spec:
   selector:
     app: ramalama-pod
   ports:
-    - protocol: TCP
-      port: 8080         # Port the service uses within the cluster
-      targetPort: 8080    # Port on the container
-      nodePort: 30080     # Port exposed on the node
+    - name: http
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
   type: NodePort
 
