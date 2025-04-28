@@ -7,7 +7,7 @@ projects:
   - name: cde-ramalama-continue
     git:
       remotes:
-        origin: 'https://github.com/rohankanojia-demos/openshift-devspaces-continue-ramalama-poc'
+        origin: 'https://github.com/redhat-developer-demos/cde-ramalama-continue'
       checkoutFrom:
         revision: master
 components:
