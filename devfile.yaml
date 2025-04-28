@@ -39,6 +39,7 @@ components:
         - "--store"
         - "/models"
         - "serve"
+        - "--network=none"
         - "ollama://granite-code:latest"
       mountSources: true
       sourceMapping: /.ramalama
