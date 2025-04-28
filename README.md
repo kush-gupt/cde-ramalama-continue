@@ -1,6 +1,6 @@
 ## Cloud Development Environment with IBM Granite Code, Continue and Ramalama
 
-[![Contribute](https://www.eclipse.org/che/contribute.svg)](https://workspaces.openshift.com#https://github.com/redhat-developer-demos/cde-ramalama-continue)
+[![Contribute](https://www.eclipse.org/che/contribute.svg)](https://workspaces.openshift.com/#https://github.com/redhat-developer-demos/cde-ramalama-continue/)
 
 This repository demonstrates the integration of [OpenShift DevSpaces](https://developers.redhat.com/products/openshift-dev-spaces/overview) with the [Continue AI coding assistant](https://marketplace.visualstudio.com/items?itemName=Continue.continue) and [IBM Granite](https://www.ibm.com/granite) models for enhanced cloud development workflows. It serves as a proof of concept (POC) for leveraging AI tools in collaborative development environments.
 
