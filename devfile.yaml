@@ -41,8 +41,6 @@ components:
         - "serve"
         - "--network=none"
         - "ollama://granite-code:latest"
-      mountSources: true
-      sourceMapping: /.ramalama
       volumeMounts:
         - name: ramalama-models
           path: /models
