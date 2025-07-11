@@ -2,15 +2,10 @@ name: Local Assistant
 version: 1.0.0
 schema: v1
 models:
-  - name: Llama CPP
-    provider: llama.cpp
+  - name: llama.cpp
+    provider: openai
     model: default
-    apiBase: http://localhost:8080
-
-tabAutocompleteModel:
-  title: "RamaLama (AutoComplete)"
-  provider: "custom"
-  model: "default"
+    apiBase: http://ramalama-qwen-service.ramalama.svc.cluster.local:8080/v1
 
 allowAnonymousTelemetry: false
 context:
